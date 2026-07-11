@@ -1,4 +1,4 @@
-# app/ingestion/loader/resume.py
+# app/ingestion/loader/resume_loader.py
 import pymupdf
 import re
 from typing import List
