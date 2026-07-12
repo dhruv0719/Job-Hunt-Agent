@@ -35,11 +35,11 @@ class PersonalInformation:
 @dataclass
 class Resume:
     personal_information: PersonalInformation
-    skills: List[str] = field(default_factory=list)
     experience: List[Experience]
     education: List[Education]
     certifications: List[str]
     projects: List[Project]
-    languages: List[str] = field(default_factory=list)
     links: List[str]
     miscellaneous: Dict[str, str]
+    skills: List[str] = field(default_factory=list)
+    languages: List[str] = field(default_factory=list)
