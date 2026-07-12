@@ -26,12 +26,15 @@ class Project:
     technologies: List[str]
     link: str
 
-
 @dataclass
-class Resume:
+class PersonalInformation:
     name: str
     email: str
     phone_number: str
+
+@dataclass
+class Resume:
+    personal_information: PersonalInformation
     skills: List[str] = field(default_factory=list)
     experience: List[Experience]
     education: List[Education]
