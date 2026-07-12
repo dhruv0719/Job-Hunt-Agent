@@ -6,7 +6,7 @@ from typing import List
 class ResumeLoader:
     def __init__(self, file_path):
         self.file_path = file_path 
-        self.link = []
+        self.links = []
 
     def load_resume(self) -> str:
         """Load the resume from the specified file path."""
@@ -24,13 +24,13 @@ class ResumeLoader:
             # Clickable links
             for link in page.get_links():
                 if "uri" in link:
-                    self.link.append(link["uri"])
+                    self.links.append(link["uri"])
 
             # URLs written as plain text
             text = page.get_text()
-            self.link.extend(re.findall(r'(https?://\S+)', text))
+            self.links.extend(re.findall(r'(https?://\S+)', text))
         
-        return self.link
+        return self.links
     
     
 if __name__ == "__main__":
