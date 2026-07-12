@@ -12,7 +12,7 @@ class ResumeLoader:
         """Load the resume from the specified file path."""
         try: 
             with pymupdf.open(self.file_path) as doc:
-                return "\n".join(page.get_text() for page in doc)
+                return "\n".join(page.get_text(sort=True) for page in doc)
 
         except Exception as e:
             print(f"Error loading resume: {e}")
@@ -27,10 +27,10 @@ class ResumeLoader:
                     self.links.append(link["uri"])
 
             # URLs written as plain text
-            text = page.get_text()
+            text = page.get_text(sort=True)
             self.links.extend(re.findall(r'(https?://\S+)', text))
         
-        return self.links
+        return list(dict.fromkeys(self.links))  # Remove duplicates while preserving order
     
     
 if __name__ == "__main__":
